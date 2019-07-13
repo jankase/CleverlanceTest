@@ -10,11 +10,16 @@ import UIKit
 class MainScreenView: UIViewController {
   var model: MainScreenViewModel = .init()
 
-  weak var content: UIStackView?
+  weak var mainStack: UIStackView?
+  weak var headerStack: UIStackView?
+  weak var userNameStack: UIStackView?
   weak var userName: UITextField?
+  weak var passwordStack: UIStackView?
   weak var password: UITextField?
+  weak var loginButtonStack: UIStackView?
   weak var loginButton: UIButton?
   weak var networkStateLabel: UILabel?
+  weak var imageStack: UIStackView?
   weak var image: UIImageView?
   weak var navigationBar: UINavigationBar?
   var previousConstraintItem: ConstraintItem?

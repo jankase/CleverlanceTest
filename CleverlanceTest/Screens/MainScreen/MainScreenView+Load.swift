@@ -35,29 +35,37 @@ extension MainScreenView {
     }
     theContentView.axis = .vertical
     theContentView.spacing = Configuration.uiSpacing
-    theContentView.isLayoutMarginsRelativeArrangement = true
-    content = theContentView
+    mainStack = theContentView
+    let theHeader = UIStackView()
+    theHeader.axis = .vertical
+    theHeader.spacing = Configuration.uiSpacing
+    theHeader.distribution = .fill
+    theHeader.alignment = .fill
+    theContentView.addArrangedSubview(theHeader)
+    headerStack = theHeader
   }
 
   func loadUserName() {
-    let theUserNameText = _standardTextField(labelText: "Username")
-    theUserNameText.textContentType = .username
-    theUserNameText.rx.text.bind(to: model.internalUserName).disposed(by: disposeBag)
-    userName = theUserNameText
+    let theUserName = _standardTextField(labelText: "Username")
+    theUserName.0.textContentType = .username
+    theUserName.0.rx.text.bind(to: model.internalUserName).disposed(by: disposeBag)
+    userName = theUserName.0
+    userNameStack = theUserName.1
   }
 
   func loadPassword() {
     let thePassword = _standardTextField(labelText: "Password")
-    thePassword.isSecureTextEntry = true
-    thePassword.textContentType = .password
-    thePassword.rx.text.bind(to: model.internalPassword).disposed(by: disposeBag)
+    thePassword.0.isSecureTextEntry = true
+    thePassword.0.textContentType = .password
+    thePassword.0.rx.text.bind(to: model.internalPassword).disposed(by: disposeBag)
     if let theUserName = userName {
-      theUserName.setNextResponder(thePassword, disposeBag: disposeBag)
+      theUserName.setNextResponder(thePassword.0, disposeBag: disposeBag)
       theUserName.snp.makeConstraints {
-        $0.width.equalTo(thePassword.snp.width)
+        $0.width.equalTo(thePassword.0.snp.width)
       }
     }
-    password = thePassword
+    password = thePassword.0
+    passwordStack = thePassword.1
   }
 
   func loadLoginButton() {
@@ -68,22 +76,26 @@ extension MainScreenView {
         .bind { [weak self] in self?._loginButtonHandler() }
         .disposed(by: disposeBag)
     let theNetworkState = UILabel()
+    theNetworkState.numberOfLines = 0
+    theNetworkState.lineBreakMode = .byWordWrapping
     model.rx.networkStateInfo.bind(to: theNetworkState.rx.text).disposed(by: disposeBag)
     let theContainer = UIStackView(arrangedSubviews: [theNetworkState, theLoginButton])
     theContainer.axis = .horizontal
-    theContainer.alignment = .trailing
+    theContainer.alignment = .firstBaseline
     theContainer.distribution = .equalCentering
-    content?.addArrangedSubview(theContainer)
+    headerStack?.addArrangedSubview(theContainer)
+    loginButtonStack = theContainer
   }
 
   func loadImage() {
     let theImageView = ScaledImageView()
     theImageView.contentMode = .scaleAspectFit
-    content?.addArrangedSubview(theImageView)
+    mainStack?.addArrangedSubview(theImageView)
     image = theImageView
   }
 
   private func _loginButtonHandler() {
+    image?.image = nil
     model.rx.loadImage()
         .observeOn(MainScheduler.asyncInstance)
         .subscribe { [weak self] aResult in
@@ -98,7 +110,7 @@ extension MainScreenView {
         .disposed(by: disposeBag)
   }
 
-  private func _standardTextField(labelText aText: String) -> UITextField {
+  private func _standardTextField(labelText aText: String) -> (UITextField, UIStackView) {
     let theDescriptionLabel = UILabel()
     theDescriptionLabel.text = aText
     let theStandardTextField = UITextField()
@@ -110,7 +122,7 @@ extension MainScreenView {
     theContainer.distribution = .fill
     theContainer.alignment = .firstBaseline
     theContainer.axis = .horizontal
-    content?.addArrangedSubview(theContainer)
-    return theStandardTextField
+    headerStack?.addArrangedSubview(theContainer)
+    return (theStandardTextField, theContainer)
   }
 }
