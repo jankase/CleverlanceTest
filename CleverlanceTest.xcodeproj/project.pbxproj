@@ -14,6 +14,7 @@
 		1D0B6EA222D68E410063F623 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0B6EA122D68E410063F623 /* RxRelay.framework */; };
 		931AD03D8CB1E09217BA3725 /* MainScreenView+Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931ADDCE49F5D457277F2F1C /* MainScreenView+Load.swift */; };
 		931AD1113D9D046DEE5885CE /* UIViewController+ShowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD02CE249A7D230E896C5 /* UIViewController+ShowError.swift */; };
+		931AD1365C4B2AE369A37C54 /* ImageDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD7E5A86B038A0CF89D70 /* ImageDataResponse.swift */; };
 		931AD2AB7E29B6A891B90402 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 931ADEBFBDBED68E5CECAE00 /* Assets.xcassets */; };
 		931AD2C0FA646CE619291B75 /* NetworkService+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD8B1CD880F1191DB480F /* NetworkService+Rx.swift */; };
 		931AD45F0DC6D475B0F06919 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD54F782D130326829B81 /* Configuration.swift */; };
@@ -24,6 +25,7 @@
 		931AD7DCA8F2862FA611E659 /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD84CAB8B9BE354A5D8A8 /* NetworkState.swift */; };
 		931ADA3250D7A922966FF907 /* String+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD26ACB258C625A042537 /* String+Password.swift */; };
 		931ADA6C1976CFEA9FBA2351 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD0E777392F361A7B9ECE /* NetworkError.swift */; };
+		931ADAB5FB4E9D1439C30BB9 /* ScaledImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931ADA7DE631F736895C2BFD /* ScaledImageView.swift */; };
 		931ADB91A0A80C94CB1186E3 /* ImageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD61FA4D04D9C9FC7B869 /* ImageResult.swift */; };
 		931ADC3C669EDEA089AA01D0 /* MainScreenView+NavbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD3B6C07ECE40BA5FF6A8 /* MainScreenView+NavbarDelegate.swift */; };
 		931ADCBD24BF9B15A1494155 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD2B062540DE45BB8C5EB /* NetworkRouter.swift */; };
@@ -55,8 +57,10 @@
 		931AD680BC236791A4C3BBE1 /* MainScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		931AD740F568D01B0F1D043F /* MainScreenError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenError.swift; sourceTree = "<group>"; };
 		931AD76241C59122A72610A8 /* CleverlanceTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleverlanceTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		931AD7E5A86B038A0CF89D70 /* ImageDataResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataResponse.swift; sourceTree = "<group>"; };
 		931AD84CAB8B9BE354A5D8A8 /* NetworkState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkState.swift; sourceTree = "<group>"; };
 		931AD8B1CD880F1191DB480F /* NetworkService+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NetworkService+Rx.swift"; sourceTree = "<group>"; };
+		931ADA7DE631F736895C2BFD /* ScaledImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaledImageView.swift; sourceTree = "<group>"; };
 		931ADC6818764CE9CE782325 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		931ADDCE49F5D457277F2F1C /* MainScreenView+Load.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainScreenView+Load.swift"; sourceTree = "<group>"; };
 		931ADE03B52C70823E250754 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -100,6 +104,14 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		931AD1BCFA6ABE33643DE96A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				931ADA7DE631F736895C2BFD /* ScaledImageView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		931AD69A9597BB684E57E86A /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +133,7 @@
 				931AD84CAB8B9BE354A5D8A8 /* NetworkState.swift */,
 				931AD61FA4D04D9C9FC7B869 /* ImageResult.swift */,
 				931AD0E777392F361A7B9ECE /* NetworkError.swift */,
+				931AD7E5A86B038A0CF89D70 /* ImageDataResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,6 +189,7 @@
 				931AD0C17246494D90872A08 /* Screens */,
 				931AD7D97BE599C0E0B4B77B /* Model */,
 				931ADAEDF7426328B6BAE5D0 /* Extension */,
+				931AD1BCFA6ABE33643DE96A /* Helpers */,
 			);
 			path = CleverlanceTest;
 			sourceTree = "<group>";
@@ -294,6 +308,8 @@
 				931ADFB46DC357FC942D73D3 /* MainScreenError.swift in Sources */,
 				931AD1113D9D046DEE5885CE /* UIViewController+ShowError.swift in Sources */,
 				931ADA6C1976CFEA9FBA2351 /* NetworkError.swift in Sources */,
+				931AD1365C4B2AE369A37C54 /* ImageDataResponse.swift in Sources */,
+				931ADAB5FB4E9D1439C30BB9 /* ScaledImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,7 +37,11 @@ class NetworkService: ReactiveCompatible {
       self?.state = .nothing
       switch aResponse.result {
       case .success(let theData):
-        aCompletionHandler(.success(theData))
+        do {
+          aCompletionHandler(.success(try JSONDecoder().decode(ImageDataResponse.self, from: theData)))
+        } catch let theError {
+          aCompletionHandler(.failed(NetworkError.failedToDecodeResponse(theError)))
+        }
       case .failure(let theError):
         aCompletionHandler(.failed(theError))
       }

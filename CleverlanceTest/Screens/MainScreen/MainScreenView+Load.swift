@@ -30,7 +30,8 @@ extension MainScreenView {
     theContentView.snp.makeConstraints {
       $0.leading.equalTo(view.snp.leadingMargin)
       $0.trailing.equalTo(view.snp.trailingMargin)
-      $0.topMargin.equalTo(effectivePreviousConstraintItem).offset(2.0 * Configuration.uiSpacing)
+      $0.top.equalTo(effectivePreviousConstraintItem).offset(2.0 * Configuration.uiSpacing)
+      $0.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom)
     }
     theContentView.axis = .vertical
     theContentView.spacing = Configuration.uiSpacing
@@ -76,6 +77,10 @@ extension MainScreenView {
   }
 
   func loadImage() {
+    let theImageView = ScaledImageView()
+    theImageView.contentMode = .scaleAspectFit
+    content?.addArrangedSubview(theImageView)
+    image = theImageView
   }
 
   private func _loginButtonHandler() {
@@ -84,7 +89,7 @@ extension MainScreenView {
         .subscribe { [weak self] aResult in
           switch aResult {
           case .next(let theData):
-            self?.image?.image = UIImage(data: theData)
+            self?.image?.image = theData.image
           case .error(let theError):
             self?.showError(theError)
           case .completed: ()

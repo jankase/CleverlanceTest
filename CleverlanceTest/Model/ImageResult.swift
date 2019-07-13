@@ -6,6 +6,6 @@
 import Foundation
 
 enum ImageResult {
-  case success(Data)
+  case success(ImageDataResponse)
   case failed(Error)
 }

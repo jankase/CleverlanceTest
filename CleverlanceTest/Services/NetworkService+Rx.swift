@@ -12,7 +12,7 @@ extension Reactive where Base: NetworkService {
     return base.internalState.asObservable()
   }
 
-  func imageData(userName anUserName: String, password aPassword: String) -> Observable<Data> {
+  func imageData(userName anUserName: String, password aPassword: String) -> Observable<ImageDataResponse> {
     return Observable.create { anObserver in
       var theRequest: Request?
       let theDisposable = Disposables.create {

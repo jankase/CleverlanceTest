@@ -23,7 +23,7 @@ extension Reactive where Base: MainScreenViewModel {
     return base.networkService.rx.state.map { $0.userInfo }.observeOn(MainScheduler.asyncInstance)
   }
 
-  func loadImage() -> Observable<Data> {
+  func loadImage() -> Observable<ImageDataResponse> {
     guard let theUserName = base.userName,
           let thePassword = base.password,
           !theUserName.isEmpty && !thePassword.isEmpty else {
