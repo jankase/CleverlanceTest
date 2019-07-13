@@ -43,4 +43,15 @@ class MainScreenView: UIViewController {
     super.viewDidAppear(animated)
     userName?.becomeFirstResponder()
   }
+
+  override func traitCollectionDidChange(_ aPreviousTraitCollection: UITraitCollection?) {
+    super.traitCollectionDidChange(aPreviousTraitCollection)
+    guard (aPreviousTraitCollection?.verticalSizeClass ?? .unspecified) != traitCollection.verticalSizeClass else {
+      return
+    }
+    configureMainStack(mainStack, for: traitCollection)
+    configureTextStack(userNameStack, for: traitCollection)
+    configureTextStack(passwordStack, for: traitCollection)
+    configureLoginButtonStack(loginButtonStack, for: traitCollection)
+  }
 }

@@ -33,8 +33,7 @@ extension MainScreenView {
       $0.top.equalTo(effectivePreviousConstraintItem).offset(2.0 * Configuration.uiSpacing)
       $0.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom)
     }
-    theContentView.axis = .vertical
-    theContentView.spacing = Configuration.uiSpacing
+    configureMainStack(theContentView, for: traitCollection)
     mainStack = theContentView
     let theHeader = UIStackView()
     theHeader.axis = .vertical
@@ -45,12 +44,55 @@ extension MainScreenView {
     headerStack = theHeader
   }
 
+  func configureMainStack(_ aStack: UIStackView?, for aTrait: UITraitCollection) {
+    guard let theStack = aStack else {
+      return
+    }
+    theStack.spacing = Configuration.uiSpacing
+    let theDefaultConfiguration = {
+      theStack.axis = .vertical
+      theStack.distribution = .fill
+    }
+    switch aTrait.verticalSizeClass {
+    case .regular, .unspecified:
+      theDefaultConfiguration()
+    case .compact:
+      theStack.axis = .horizontal
+      theStack.distribution = .fillEqually
+    @unknown default:
+      theDefaultConfiguration()
+    }
+  }
+
   func loadUserName() {
     let theUserName = _standardTextField(labelText: "Username")
     theUserName.0.textContentType = .username
     theUserName.0.rx.text.bind(to: model.internalUserName).disposed(by: disposeBag)
     userName = theUserName.0
     userNameStack = theUserName.1
+    configureTextStack(userNameStack, for: traitCollection)
+  }
+
+  func configureTextStack(_ aStack: UIStackView?, for aTrait: UITraitCollection) {
+    guard let theStack = aStack else {
+      return
+    }
+    let theDefaultConfiguration = {
+      theStack.axis = .horizontal
+      theStack.distribution = .fill
+      theStack.alignment = .firstBaseline
+
+    }
+    switch aTrait.verticalSizeClass {
+    case .regular, .unspecified:
+      theDefaultConfiguration()
+    case .compact:
+      theStack.axis = .vertical
+      theStack.distribution = .fill
+      theStack.alignment = .fill
+    @unknown default:
+      theDefaultConfiguration()
+    }
   }
 
   func loadPassword() {
@@ -66,6 +108,7 @@ extension MainScreenView {
     }
     password = thePassword.0
     passwordStack = thePassword.1
+    configureTextStack(passwordStack, for: traitCollection)
   }
 
   func loadLoginButton() {
@@ -80,11 +123,27 @@ extension MainScreenView {
     theNetworkState.lineBreakMode = .byWordWrapping
     model.rx.networkStateInfo.bind(to: theNetworkState.rx.text).disposed(by: disposeBag)
     let theContainer = UIStackView(arrangedSubviews: [theNetworkState, theLoginButton])
-    theContainer.axis = .horizontal
-    theContainer.alignment = .firstBaseline
-    theContainer.distribution = .equalCentering
+    configureLoginButtonStack(theContainer, for: traitCollection)
     headerStack?.addArrangedSubview(theContainer)
     loginButtonStack = theContainer
+    networkStateLabel = theNetworkState
+  }
+
+  func configureLoginButtonStack(_ aStack: UIStackView?, for aTrait: UITraitCollection) {
+    guard let theStack = aStack else {
+      return
+    }
+    switch aTrait.verticalSizeClass {
+    case .regular, .unspecified:
+      theStack.axis = .horizontal
+      theStack.alignment = .firstBaseline
+      theStack.distribution = .equalCentering
+    case .compact:
+      theStack.axis = .vertical
+      theStack.alignment = .center
+      theStack.distribution = .fill
+    @unknown default: ()
+    }
   }
 
   func loadImage() {
