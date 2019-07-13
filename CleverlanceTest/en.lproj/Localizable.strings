@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  CleverlanceTest
+
+  Created by Jan Kase on 13/07/2019.
+  Copyright © 2019 Jan Kaše. All rights reserved.
+*/
+
+"ErrorTitle"="Error";
+"ErrorCloseButton"="OK";
+"NetworkStateLoading"="Loading image from server";
+"MissingCredentials"="Username or password not available";
+"MainScreenTitle"="Image loader";
+"UsernameLabel"="Username";
+"PasswordLabel"="Password";
+"DownloadButton"="Login & Download";
+"FailedCreateRequestError"="Failed to create download request.";
+"FailedToDecodeResponseError"="Unexpected response format";
+"WrongCredentialsError"="Provided credentials are wrong";

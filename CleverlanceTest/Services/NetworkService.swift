@@ -43,7 +43,8 @@ class NetworkService: ReactiveCompatible {
           aCompletionHandler(.failed(NetworkError.failedToDecodeResponse(theError)))
         }
       case .failure(let theError):
-        aCompletionHandler(.failed(theError))
+        aCompletionHandler(.failed(NetworkError.networkError(statusCode: aResponse.response?.statusCode,
+                                                             originalError: theError)))
       }
     }
   }

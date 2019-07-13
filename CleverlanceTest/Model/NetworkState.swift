@@ -14,7 +14,7 @@ enum NetworkState {
     case .nothing:
       return nil
     case .loadingImage:
-      return "Loading image from server"
+      return "NetworkStateLoading".localized
     }
   }
 }

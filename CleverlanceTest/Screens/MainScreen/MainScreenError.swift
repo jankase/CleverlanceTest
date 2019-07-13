@@ -5,16 +5,16 @@
 
 import UIKit
 
-enum MainScreenError: Error, CustomStringConvertible {
+enum MainScreenError: LocalizedError, CustomStringConvertible {
   case missingLoginInformation
 
   var description: String {
     switch self {
     case .missingLoginInformation:
-      return "Username or password not available"
+      return "MissingCredentials".localized
     }
   }
-  var localizedDescription: String {
+  var errorDescription: String? {
     return description
   }
 }

@@ -12,6 +12,7 @@
 		1D0B6E9E22D684530063F623 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0B6E9A22D684530063F623 /* RxSwift.framework */; };
 		1D0B6E9F22D684530063F623 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0B6E9B22D684530063F623 /* Alamofire.framework */; };
 		1D0B6EA222D68E410063F623 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D0B6EA122D68E410063F623 /* RxRelay.framework */; };
+		1DE3259822DA492400B1C5E6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1DE3259A22DA492400B1C5E6 /* Localizable.strings */; };
 		931AD03D8CB1E09217BA3725 /* MainScreenView+Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931ADDCE49F5D457277F2F1C /* MainScreenView+Load.swift */; };
 		931AD1113D9D046DEE5885CE /* UIViewController+ShowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD02CE249A7D230E896C5 /* UIViewController+ShowError.swift */; };
 		931AD1365C4B2AE369A37C54 /* ImageDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD7E5A86B038A0CF89D70 /* ImageDataResponse.swift */; };
@@ -26,6 +27,7 @@
 		931ADA3250D7A922966FF907 /* String+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD26ACB258C625A042537 /* String+Password.swift */; };
 		931ADA6C1976CFEA9FBA2351 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD0E777392F361A7B9ECE /* NetworkError.swift */; };
 		931ADAB5FB4E9D1439C30BB9 /* ScaledImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931ADA7DE631F736895C2BFD /* ScaledImageView.swift */; };
+		931ADAE3EB7760CC7987C6DA /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD2D69DBF792C60F624A0 /* String+Localization.swift */; };
 		931ADB91A0A80C94CB1186E3 /* ImageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD61FA4D04D9C9FC7B869 /* ImageResult.swift */; };
 		931ADC3C669EDEA089AA01D0 /* MainScreenView+NavbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD3B6C07ECE40BA5FF6A8 /* MainScreenView+NavbarDelegate.swift */; };
 		931ADCBD24BF9B15A1494155 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931AD2B062540DE45BB8C5EB /* NetworkRouter.swift */; };
@@ -42,11 +44,13 @@
 		1D0B6E9A22D684530063F623 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		1D0B6E9B22D684530063F623 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		1D0B6EA122D68E410063F623 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		1DE3259922DA492400B1C5E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		931AD01F1C97D1A6BF1CD5AD /* MainScreenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		931AD02CE249A7D230E896C5 /* UIViewController+ShowError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ShowError.swift"; sourceTree = "<group>"; };
 		931AD0E777392F361A7B9ECE /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		931AD26ACB258C625A042537 /* String+Password.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Password.swift"; sourceTree = "<group>"; };
 		931AD2B062540DE45BB8C5EB /* NetworkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		931AD2D69DBF792C60F624A0 /* String+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		931AD3B6C07ECE40BA5FF6A8 /* MainScreenView+NavbarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainScreenView+NavbarDelegate.swift"; sourceTree = "<group>"; };
 		931AD3E6578BCB1BD0E99869 /* UITextField+NextResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+NextResponder.swift"; sourceTree = "<group>"; };
 		931AD54F782D130326829B81 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 				931AD3E6578BCB1BD0E99869 /* UITextField+NextResponder.swift */,
 				931AD26ACB258C625A042537 /* String+Password.swift */,
 				931AD02CE249A7D230E896C5 /* UIViewController+ShowError.swift */,
+				931AD2D69DBF792C60F624A0 /* String+Localization.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				931AD7D97BE599C0E0B4B77B /* Model */,
 				931ADAEDF7426328B6BAE5D0 /* Extension */,
 				931AD1BCFA6ABE33643DE96A /* Helpers */,
+				1DE3259A22DA492400B1C5E6 /* Localizable.strings */,
 			);
 			path = CleverlanceTest;
 			sourceTree = "<group>";
@@ -221,6 +227,7 @@
 		931AD3E31EB31E7AE73533DC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Jan Kaše";
 			};
 			buildConfigurationList = 931AD0D2D9304EB520234F3A /* Build configuration list for PBXProject "CleverlanceTest" */;
@@ -228,7 +235,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -248,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				931AD2AB7E29B6A891B90402 /* Assets.xcassets in Resources */,
+				1DE3259822DA492400B1C5E6 /* Localizable.strings in Resources */,
 				931AD5EAB0AC7546D2E11CAD /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,12 +317,21 @@
 				931ADA6C1976CFEA9FBA2351 /* NetworkError.swift in Sources */,
 				931AD1365C4B2AE369A37C54 /* ImageDataResponse.swift in Sources */,
 				931ADAB5FB4E9D1439C30BB9 /* ScaledImageView.swift in Sources */,
+				931ADAE3EB7760CC7987C6DA /* String+Localization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1DE3259A22DA492400B1C5E6 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DE3259922DA492400B1C5E6 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		931AD6C094E8DF6D798C1197 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -331,6 +347,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -392,6 +409,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

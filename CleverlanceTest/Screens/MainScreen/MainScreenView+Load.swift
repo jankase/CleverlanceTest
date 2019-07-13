@@ -11,7 +11,7 @@ import UIKit
 extension MainScreenView {
   func loadNavigationBar() {
     let theNavigationBar = UINavigationBar()
-    theNavigationBar.pushItem(.init(title: "Image loader"), animated: false)
+    theNavigationBar.pushItem(.init(title: "MainScreenTitle".localized), animated: false)
     theNavigationBar.delegate = self
     theNavigationBar.backgroundColor = view.tintColor
     view.addSubview(theNavigationBar)
@@ -65,7 +65,7 @@ extension MainScreenView {
   }
 
   func loadUserName() {
-    let theUserName = _standardTextField(labelText: "Username")
+    let theUserName = _standardTextField(labelText: "UsernameLabel".localized)
     theUserName.0.textContentType = .username
     theUserName.0.rx.text.bind(to: model.internalUserName).disposed(by: disposeBag)
     userName = theUserName.0
@@ -96,7 +96,7 @@ extension MainScreenView {
   }
 
   func loadPassword() {
-    let thePassword = _standardTextField(labelText: "Password")
+    let thePassword = _standardTextField(labelText: "PasswordLabel".localized)
     thePassword.0.isSecureTextEntry = true
     thePassword.0.textContentType = .password
     thePassword.0.rx.text.bind(to: model.internalPassword).disposed(by: disposeBag)
@@ -113,7 +113,7 @@ extension MainScreenView {
 
   func loadLoginButton() {
     let theLoginButton = UIButton(type: .system)
-    theLoginButton.setTitle("Login & Download", for: .normal)
+    theLoginButton.setTitle("DownloadButton".localized, for: .normal)
     model.rx.canEnableLoginButton.bind(to: theLoginButton.rx.isEnabled).disposed(by: disposeBag)
     theLoginButton.rx.controlEvent(.touchUpInside)
         .bind { [weak self] in self?._loginButtonHandler() }
