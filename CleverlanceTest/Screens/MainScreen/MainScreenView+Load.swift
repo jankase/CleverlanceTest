@@ -24,6 +24,12 @@ extension MainScreenView {
     navigationBar = theNavigationBar
   }
 
+  func loadTapHandler() {
+    let theTapRecognizer = UITapGestureRecognizer()
+    theTapRecognizer.rx.event.bind { [weak self] _ in self?.view.endEditing(true) }.disposed(by: disposeBag)
+    view.addGestureRecognizer(theTapRecognizer)
+  }
+
   func loadContentHolder() {
     let theContentView = UIStackView()
     view.addSubview(theContentView)
@@ -59,6 +65,7 @@ extension MainScreenView {
     case .compact:
       theStack.axis = .horizontal
       theStack.distribution = .fillEqually
+      theStack.alignment = .fill
     @unknown default:
       theDefaultConfiguration()
     }
@@ -88,7 +95,7 @@ extension MainScreenView {
       theDefaultConfiguration()
     case .compact:
       theStack.axis = .vertical
-      theStack.distribution = .fill
+      theStack.distribution = .fillProportionally
       theStack.alignment = .fill
     @unknown default:
       theDefaultConfiguration()
@@ -155,6 +162,7 @@ extension MainScreenView {
 
   private func _loginButtonHandler() {
     image?.image = nil
+    view.endEditing(true)
     model.rx.loadImage()
         .observeOn(MainScheduler.asyncInstance)
         .subscribe { [weak self] aResult in
@@ -176,6 +184,8 @@ extension MainScreenView {
     theStandardTextField.autocorrectionType = .no
     theStandardTextField.autocapitalizationType = UITextAutocapitalizationType.none
     theStandardTextField.borderStyle = .roundedRect
+    theStandardTextField.tintColor = Configuration.Colors.defaultTint
+    theStandardTextField.backgroundColor = Configuration.Colors.textFieldBackground
     let theContainer = UIStackView(arrangedSubviews: [theDescriptionLabel, theStandardTextField])
     theContainer.spacing = Configuration.uiSpacing
     theContainer.distribution = .fill
