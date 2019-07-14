@@ -30,7 +30,6 @@ class MainScreenView: UIViewController {
 
   override func loadView() {
     view = UIView()
-    view.tintColor = Configuration.Colors.defaultTint
     view.backgroundColor = Configuration.Colors.background
     loadTapHandler()
     loadNavigationBar()

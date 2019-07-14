@@ -13,7 +13,6 @@ extension MainScreenView {
     let theNavigationBar = UINavigationBar()
     theNavigationBar.pushItem(.init(title: "MainScreenTitle".localized), animated: false)
     theNavigationBar.delegate = self
-    theNavigationBar.backgroundColor = view.tintColor
     view.addSubview(theNavigationBar)
     theNavigationBar.snp.makeConstraints {
       $0.leading.equalToSuperview()
@@ -113,6 +112,10 @@ extension MainScreenView {
         $0.width.equalTo(thePassword.0.snp.width)
       }
     }
+    thePassword.0.rx.controlEvent(.editingDidEndOnExit)
+        .filter { [weak self] in self?.model.canPerformLogin ?? false }
+        .bind { [weak self] in self?._loginButtonHandler() }
+        .disposed(by: disposeBag)
     password = thePassword.0
     passwordStack = thePassword.1
     configureTextStack(passwordStack, for: traitCollection)
@@ -161,11 +164,18 @@ extension MainScreenView {
   }
 
   private func _loginButtonHandler() {
+    guard !model.loadingRequestedAndNotCompleted else {
+      return
+    }
+    model.loadingRequestedAndNotCompleted = true
     image?.image = nil
     view.endEditing(true)
     model.rx.loadImage()
         .observeOn(MainScheduler.asyncInstance)
         .subscribe { [weak self] aResult in
+          defer {
+            self?.model.loadingRequestedAndNotCompleted = false
+          }
           switch aResult {
           case .next(let theData):
             self?.image?.image = theData.image
@@ -184,7 +194,6 @@ extension MainScreenView {
     theStandardTextField.autocorrectionType = .no
     theStandardTextField.autocapitalizationType = UITextAutocapitalizationType.none
     theStandardTextField.borderStyle = .roundedRect
-    theStandardTextField.tintColor = Configuration.Colors.defaultTint
     theStandardTextField.backgroundColor = Configuration.Colors.textFieldBackground
     let theContainer = UIStackView(arrangedSubviews: [theDescriptionLabel, theStandardTextField])
     theContainer.spacing = Configuration.uiSpacing

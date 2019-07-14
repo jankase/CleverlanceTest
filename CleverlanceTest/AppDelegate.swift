@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    Configuration.Colors.applyColorScheme()
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.rootViewController = MainScreenView()
     window?.makeKeyAndVisible()

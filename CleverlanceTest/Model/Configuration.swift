@@ -16,5 +16,13 @@ struct Configuration {
     static let background = #colorLiteral(red: 141.0 / 255.0, green: 170.0 / 255.0, blue: 143.0 / 255.0, alpha: 1.0)
     static let textFieldBackground = #colorLiteral(red: 120.0 / 255.0, green: 132.0 / 255.0, blue: 117.0 / 255.0, alpha: 1.0)
     static let disabled = #colorLiteral(red: 94.0 / 255.0, green: 93.0 / 255.0, blue: 92.0 / 255.0, alpha: 1.0)
+
+    static func applyColorScheme() {
+      UIView.appearance().tintColor = defaultTint
+      UINavigationBar.appearance().backgroundColor = background
+      UITextField.appearance().backgroundColor = textFieldBackground
+      UIButton.appearance().setTitleColor(disabled, for: .disabled)
+      UIButton.appearance().setTitleColor(defaultTint, for: .normal)
+    }
   }
 }

@@ -10,14 +10,8 @@ extension Reactive where Base: MainScreenViewModel {
   var canEnableLoginButton: Observable<Bool> {
     return Observable.combineLatest(base.internalUserName,
                                     base.internalPassword,
-                                    base.networkService.rx.state) { anUserName, aPassword, aNetworkState in
-      switch aNetworkState {
-      case .nothing:
-        return !((anUserName?.isEmpty ?? true) || (aPassword?.isEmpty ?? true))
-      default:
-        return false
-      }
-    }
+                                    base.networkService.rx.state,
+                                    resultSelector: base.canPerformLogin)
   }
   var networkStateInfo: Observable<String?> {
     return base.networkService.rx.state.map { $0.userInfo }.observeOn(MainScheduler.asyncInstance)
